@@ -16,7 +16,10 @@ def addBytebeat():
     title = request.args.get('t', default="Untitled song")
     con = sqlite3.connect('bytebeats.db')
     cur = con.cursor()
-    cur.execute("INSERT INTO bytebeats VALUES (?,?)", (title, exprC))
+    cur.execute
+    #id = cur.rowcount + 1
+    id = 
+    cur.execute("INSERT INTO bytebeats VALUES (?,?,?)", (id, title, exprC))
     cur.close()
     return "Hi"
 
