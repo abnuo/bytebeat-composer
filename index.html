@@ -19,6 +19,21 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pako/1.0.3/pako.min.js"></script>
 </head>
 <body>
+	<script>
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+function share() {
+  startUrl = "http://localhost:8000";
+  b64 = window.location.href.split("#")[1]
+  //title = thing
+  newUrl = window.location.href.split("#")[0] + "/add?e=" + encodeURIComponent(b64) + "&t=Untitled";
+}
+	</script>
 	<div id="content">
 		<div id="container-fixed">
 			<textarea id="editor" spellcheck="false">t*(t&16384?6:5)*(5-(3&t>>(t&4096?7:14)))>>(3&t>>9)|t>>3</textarea>
@@ -54,6 +69,7 @@
 				<div id="canvas-timecursor"></div>
 				<div id="canvas-toggleplay" class="canvas-toggleplay-show"></div>
 			</div>
+			<button onclick="share()">Share bytebeat</button>
 		</div>
 		<div id="container-scroll">
 			<div class="library-content">
