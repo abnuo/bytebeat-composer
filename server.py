@@ -20,6 +20,7 @@ def addBytebeat():
     #id = cur.rowcount + 1
     id = cur.fetchall()[0][0] + 1
     cur.execute("INSERT INTO bytebeats VALUES (?,?,?)", (id, title, exprC))
+    con.commit()
     cur.close()
     return str(id)
 
