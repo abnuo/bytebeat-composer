@@ -1,4 +1,4 @@
-# bytebeat-composer
+# bytebeat-composer with IDs
 Bytebeat player with playlist that contains many interesting formulas from the Internet.
 
 **Player and library: https://dollchan.net/bytebeat/**<br>
