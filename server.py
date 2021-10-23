@@ -6,17 +6,28 @@ app = Flask(__name__, static_folder='/')
 logging.basicConfig(level=logging.INFO)
 
 @app.route('/hello')
-def index():
+def hello():
     return "Hello World!"
 
 @app.route('/add')
-def index():
+def addBytebeat():
     #if request.args.get('e', default=None) != None:
     exprC = request.args.get('e', default="v3b64q1ZKzk9JVbJS0ijRKtE3NTCwszNVAzE0lWoB")
     title = request.args.get('t', default="Untitled song")
     con = sqlite3.connect('bytebeats.db')
     cur = con.cursor()
     cur.execute("INSERT INTO bytebeats VALUES (?,?)", (title, exprC))
+    cur.close()
+    return "Hi"
+
+@app.route('/get')
+def getBytebeat():
+    #if request.args.get('e', default=None) != None:
+    id = request.args.get('id', default="v3b64q1ZKzk9JVbJS0ijRKtE3NTCwszNVAzE0lWoB")
+    #title = request.args.get('t', default="Untitled song")
+    con = sqlite3.connect('bytebeats.db')
+    cur = con.cursor()
+    #cur.execute("INSERT INTO bytebeats VALUES (?,?)", (title, exprC))
     cur.close()
     return "Hi"
 
