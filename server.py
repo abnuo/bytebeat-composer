@@ -16,17 +16,17 @@ def addBytebeat():
     title = request.args.get('t', default="Untitled song")
     con = sqlite3.connect('bytebeats.db')
     cur = con.cursor()
-    cur.execute
+    cur.execute("SELECT * FROM bytebeats ORDER BY id DESC LIMIT 1;")
     #id = cur.rowcount + 1
-    id = 
+    id = cur.fetchall()[0][0] + 1
     cur.execute("INSERT INTO bytebeats VALUES (?,?,?)", (id, title, exprC))
     cur.close()
-    return "Hi"
+    return str(id)
 
 @app.route('/get')
 def getBytebeat():
     #if request.args.get('e', default=None) != None:
-    id = request.args.get('id', default="v3b64q1ZKzk9JVbJS0ijRKtE3NTCwszNVAzE0lWoB")
+    id = int(request.args.get('id', default="1"))
     #title = request.args.get('t', default="Untitled song")
     con = sqlite3.connect('bytebeats.db')
     cur = con.cursor()
